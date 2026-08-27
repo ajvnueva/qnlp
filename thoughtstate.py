@@ -97,10 +97,10 @@ class SwiGLUFFN(nn.Module):
         g_r, g_i = self.w_gate(phi_r, phi_i)
         u_r, u_i = self.w_up(phi_r, phi_i)
 
-        energy_gate = F.silu(g_r.pow(2) + g_i.pow(2))
+        gate = F.silu(g_r.pow(2) + g_i.pow(2))
         
-        h_r = energy_gate * u_r
-        h_i = energy_gate * u_i
+        h_r = gate * u_r
+        h_i = gate * u_i
 
         return self.w_down(h_r, h_i)
 
